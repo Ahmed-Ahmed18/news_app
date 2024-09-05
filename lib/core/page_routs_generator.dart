@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:news_app/core/page_routs_name.dart';
 import 'package:news_app/modules/category_screen.dart';
-import 'package:news_app/modules/news_screen.dart';
+import 'package:news_app/news/news_screen.dart';
 
 class RoutesGenerator{
 
