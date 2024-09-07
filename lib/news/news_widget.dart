@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:news_app/api/api_manger.dart';
 import 'package:news_app/model/news_response.dart';
 import 'package:news_app/model/source.dart';
+import 'package:news_app/news/news_item.dart';
 
 import '../core/app_colors.dart';
 
@@ -19,7 +20,7 @@ class _NewsWidgetState extends State<NewsWidget> {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<NewsResponse?>(
-        future: ApiManger.getNewsBySourceId(widget.source.id??''),
+        future: ApiManger.getNewsBySourceId(sourceId:  widget.source.id??''),
         builder: (context,snapshot){
           if(snapshot.connectionState==ConnectionState.waiting){
             return Center(child: CircularProgressIndicator(
@@ -34,7 +35,7 @@ class _NewsWidgetState extends State<NewsWidget> {
                 ),),
                 Center(child: ElevatedButton(onPressed: (){
 
-                  ApiManger.getNewsBySourceId(widget.source.id??"");
+                  ApiManger.getNewsBySourceId(sourceId:  widget.source.id??"");
                   setState(() {
 
                   });
@@ -47,7 +48,7 @@ class _NewsWidgetState extends State<NewsWidget> {
                 Text(snapshot.data!.message!),
                 ElevatedButton(
                     onPressed: (){
-                      ApiManger.getNewsBySourceId(widget.source.id??'');
+                      ApiManger.getNewsBySourceId(sourceId:  widget.source.id??'');
                       setState(() {
 
                       });
@@ -57,7 +58,7 @@ class _NewsWidgetState extends State<NewsWidget> {
           }
           var newslist=snapshot.data!.articles!;
           return ListView.builder(itemBuilder: (context,index){
-            return Text(newslist[index].title??'');
+            return NewsItem(news: newslist[index]);
           },itemCount: newslist.length,);
 
         }

@@ -5,10 +5,11 @@ import 'package:news_app/api/api_constants.dart';
 import 'package:news_app/model/news_response.dart';
 import 'package:news_app/model/source.dart';
 class ApiManger {
-  static Future<Source?> getSources() async {
+  static Future<Source?> getSources(String categoryid) async {
     Uri url = Uri.https(ApiConstants.baseurl, ApiConstants.sourceApi,
         {
-          'apiKey': '35f8bd9fdd084c649935379b5f7231a7'
+          'apiKey': '35f8bd9fdd084c649935379b5f7231a7',
+          'category':categoryid
         });
     var response = await http.get(url);
     try {
@@ -20,11 +21,12 @@ class ApiManger {
   }
   //https://newsapi.org/v2/everything?q=bitcoin&apiKey=35f8bd9fdd084c649935379b5f7231a7
 
-  static Future<NewsResponse> getNewsBySourceId (String sourceId)async{
+  static Future<NewsResponse> getNewsBySourceId ({String? sourceId,String? quary})async{
 
     Uri url=Uri .https(ApiConstants.baseurl,ApiConstants.newsApi,{
       'apiKey':'35f8bd9fdd084c649935379b5f7231a7',
-      'sources':sourceId
+      'sources':sourceId,
+      'q':quary
     });
     var response=await http.get(url);
     try{
