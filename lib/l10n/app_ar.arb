@@ -1,0 +1,16 @@
+{
+"news_app" : "تطبيق الأخبار",
+"home_message":"إختر فئة اهتمامك",
+"sport":"رياضة",
+"general":"عام",
+"health":"الصحة",
+"business":"الاعمال",
+"entertainment":"الترفيه",
+"science":"العلم",
+"categories":"الفئات",
+"settings":"الاعدادات",
+"arabic":"العربية",
+"english":"الانجليزية",
+"language":"اللغة"
+
+}
